@@ -67,7 +67,7 @@
           <tr>
             <th scope="row">{{movimiento.id}}</th>
             <td>{{movimiento.ciudadano_id}}</td>
-            <td>{{movimiento.tipo_movimiento}}</td>
+            <td>{%if movimiento.tipo_movimiento == 'IN' %} Ingreso al pais {%else%} Salida del pais {% endif %}</td>
             <td>{{movimiento.fecha_movimiento}}</td>
           </tr>
           {%endfor %}
