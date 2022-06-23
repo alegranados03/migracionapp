@@ -67,4 +67,15 @@ def desactivarAlerta(request, pasaporte):
 
 
 def bucarPerfil(request):
-    return render(request, 'buscarPerfil.html')
+    ciudadanos = []
+    if request.method == 'POST':
+        ciudadanos = Ciudadano.objects.filter(
+                pasaporte__contains=request.POST['pasaporte'])
+        print(request.POST)
+        try:
+            ciudadanos = Ciudadano.objects.filter(
+                pasaporte__contains=request.POST['pasaporte'])
+        except:
+            ciudadanos = []
+
+    return render(request, 'buscarPerfil.html', {'ciudadanos': ciudadanos})
